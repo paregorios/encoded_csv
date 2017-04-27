@@ -72,6 +72,14 @@ def get_csv(
         reader = csv.DictReader(islice(f, skip_lines, None), **reader_kwargs)
         for row in reader:
             content.append(row)
-    field_names = list(content[0].keys())
 
-    return (field_names, content)
+    if len(content) > 0:
+        return (
+            {
+                'content': content,
+                'fieldnames': list(content[0].keys()),
+                'encoding': file_encoding,
+                'dialect': reader_kwargs['dialect']
+            })
+    else:
+        return None

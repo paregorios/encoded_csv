@@ -32,9 +32,9 @@ class CSVTests(unittest.TestCase):
 
     def _execute(self, **kwargs):
         kwargs['csv_file'] = joinpath(self.data_dir, kwargs['csv_file'])
-        fields, data = get_csv(**kwargs)
-        assert_equal(self.length, len(data))
-        assert_equal(self.fields, fields)
+        d = get_csv(**kwargs)
+        assert_equal(self.length, len(d['content']))
+        assert_equal(self.fields, d['fieldnames'])
 
     def test_excel(self):
         kwargs = {'csv_file': 'pets_excel.csv'}
