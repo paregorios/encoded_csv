@@ -52,4 +52,9 @@ class CSVTests(unittest.TestCase):
         kwargs = {'csv_file': 'pets_excel_utf8.csv'}
         self._execute(**kwargs)
 
+    def test_excel_windows(self):
+        kwargs = {'csv_file': 'pets_excel_windows.csv'}
+        self._execute(**kwargs)
+
+
 
