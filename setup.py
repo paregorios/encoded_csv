@@ -1,31 +1,42 @@
-from setuptools import setup, find_packages
 from codecs import open
+from distutils.core import setup
+import encoded_csv
 from os import path
 
 here = path.abspath(path.dirname(__file__))
-with open(path.join(here, 'README.md'), encoding='utf-8') as f:
-    long_description = f.read()
+readme_file = path.join(here, 'README.md')
+try:
+    from m2r import parse_from_file
+    long_description = parse_from_file(readme_file)
+except ImportError:
+    # m2r may not be installed in user environment
+    with open(readme_file, encoding='utf-8') as f:
+        long_description = f.read()
+
 setup(
     name='encoded_csv',
-    version='0.2',
-    description='change me',
+    version='0.2a',
+    description='Read a CSV file using arbitrary character encodings.',
     long_description=long_description,
     url='http://change.me',
-    author='Change Me',
-    author_email='change@me.org',
+    author='Tom Elliott',
+    author_email='tom.elliott@nyu.edu',
     license='LICENSE.txt',
-    # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
-        'Development Status :: 1 - Planning',
+        'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
-        'Topic :: Change Me',
-        'License :: License :: OSI Approved :: GNU Affero General Public License v3'
+        'Topic :: Text Processing :: Linguistic',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+        'License :: OSI Approved :: GNU Affero General Public License v3',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3'
     ],
-    keywords='"change me", "please change me',
+    keywords='scripting, csv, i18n, encoding',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
-    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
+    packages=['encoded_csv'],
 
     # Alternatively, if you want to distribute just a my_module.py, uncomment
     # this:
@@ -36,6 +47,7 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=['chardet'],
+    python_requires='~=3.6',
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
