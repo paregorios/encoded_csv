@@ -1,14 +1,10 @@
 """Tests for the encoded_csv package."""
 
-__author__ = 'Tom Elliott'
-__copyright__ = 'Copyright ©️ 2017 New York University'
-__license__ = 'See LICENSE.txt'
-__version__ = '0.1'
 
 from airtight.logging import flog
 import csv
 from inspect import getsourcefile
-from nose.tools import assert_equal, assert_not_equal, raises
+from nose.tools import assert_equal
 from encoded_csv import get_csv
 from os.path import dirname, join as joinpath, realpath
 import unittest
