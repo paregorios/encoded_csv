@@ -37,5 +37,9 @@ Keyword arguments:
 
 Bug reports and feature requests are welcome, but really I'd prefer pull requests. 
 
+ * pypi: https://pypi.python.org/pypi/encoded-csv
+ * github: https://github.com/paregorios/encoded_csv
+
+ 
     
 
