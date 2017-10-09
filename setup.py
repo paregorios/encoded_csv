@@ -14,7 +14,7 @@ except ImportError:
 
 setup(
     name='encoded_csv',
-    version='0.2.a2',
+    version='0.2',
     description='Read a CSV file using arbitrary character encodings.',
     long_description=long_description,
     url='http://change.me',
