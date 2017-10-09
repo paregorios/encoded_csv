@@ -4,6 +4,7 @@ This module provides a single function: get_csv(), which is used to read
 an encoded CSV file.
 """
 
+from airtight.logging import flog
 import chardet
 import codecs
 import csv
@@ -17,7 +18,8 @@ def get_csv(
     skip_lines=0,
     encoding='',
     dialect='',
-    fieldnames=[]
+    fieldnames=[],
+    sample_lines=100
 ):
     """Read content from an encoded CSV file.
 
@@ -41,7 +43,7 @@ def get_csv(
 
     # encoding detection
     if encoding == '':
-        num_bytes = min(32, os.path.getsize(rpath))
+        num_bytes = min(1024, os.path.getsize(rpath))
         raw = open(rpath, 'rb').read(num_bytes)
         if raw.startswith(codecs.BOM_UTF8):
             file_encoding = 'utf-8-sig'
@@ -58,9 +60,12 @@ def get_csv(
 
         # dialect detection
         if dialect == '':
-            if skip_lines != 0:
-                islice(f, skip_lines)
-            sample = f.read(1024)
+            for _ in range(skip_lines):
+                next(f)
+            sample = []
+            for _ in range(sample_lines):
+                sample.append(f.readline())
+            sample = ''.join(sample)
             sniffer = csv.Sniffer()
             reader_kwargs['dialect'] = sniffer.sniff(sample)
         else:
