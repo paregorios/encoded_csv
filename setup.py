@@ -1,6 +1,5 @@
 from codecs import open
 from distutils.core import setup
-import encoded_csv
 from os import path
 
 here = path.abspath(path.dirname(__file__))
@@ -15,7 +14,7 @@ except ImportError:
 
 setup(
     name='encoded_csv',
-    version='0.2a',
+    version='0.2.a2',
     description='Read a CSV file using arbitrary character encodings.',
     long_description=long_description,
     url='http://change.me',
