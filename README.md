@@ -2,7 +2,9 @@
 
 Could that CSV file be encoded in something other than ASCII? No problem.
 
-This package provides support for reading CSV files that use arbitrary text encodings. It is built on top of Python's standard [csv](https://docs.python.org/3/library/csv.html) and [codecs](https://docs.python.org/3.6/library/codecs.html) packages, and it uses [Daniel Blanchard's ```chardet``` universal encoding detector](https://pypi.python.org/pypi/chardet) to guess the encoding for a file, if necessary.
+This package provides support for reading CSV files that use arbitrary text encodings. It is built on top of Python's standard [csv](https://docs.python.org/3/library/csv.html) and [codecs](https://docs.python.org/3.6/library/codecs.html) packages, and it uses [Daniel Blanchard's ```chardet``` universal encoding detector](https://pypi.python.org/pypi/chardet) to guess the encoding for a file, if necessary. 
+
+Note that ```utf-8-sig``` (UTF-8 with leading [Byte Order Mark](http://unicode.org/faq/utf_bom.html#BOM)) is supported. This format is used by recent versions of Microsoft Excel when the user selects "Save As ..." and chooses the "CSV UTF-8."
 
 ## using it
 
