@@ -6,6 +6,12 @@ This package provides support for reading CSV files that use arbitrary text enco
 
 Note that ```utf-8-sig``` (UTF-8 with leading [Byte Order Mark](http://unicode.org/faq/utf_bom.html#BOM)) is supported. This format is used by recent versions of Microsoft Excel when the user selects "Save As ..." and chooses the "CSV UTF-8."
 
+## installation
+
+```
+pip install encoded_csv
+```
+
 ## using it
 
 There's just one function: ```get_csv()```, as follows:
